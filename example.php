@@ -14,7 +14,7 @@ This web page has been developed by Wani.
 <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
 <!--[if lt IE 10]>
-<script src="html5.input-formaction-ie.js"></script>
+<script src="html5-formaction-ie.js"></script>
 <![endif]-->
 
 </head>

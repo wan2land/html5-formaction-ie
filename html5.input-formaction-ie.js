@@ -1,19 +1,15 @@
 ;(function(){
 	var
-	eventBind = function( target, type, func ) {
-		if ( target.attachEvent ) {
-			target.attachEvent( 'on' + type, func );
-		}
-		else if ( target.addEventListener ) {
-			target.addEventListener( type, func );
-		}
-	}
+	bind = function( target, type, func ) {
+		// 어차피 ie9 이하에서만 작동할거라서 나머지 Event 삭제
+		target.attachEvent( 'on' + type, func );
+	},
 	each = function( elems, block ) {
 		for( var i = 0, len = elems.length; i < len; i++) {
 			block( elems[i] );
 		}
 	};
-	window.onload = function() {
+	bind( window, 'load', function(){
 		var targets = [];
 		each( document.getElementsByTagName('form'), function( form ) {
 			each( form.getElementsByTagName('input'), function( input ) {
@@ -28,11 +24,11 @@
 			});			
 		});
 		each( targets, function( target ) {
-			eventBind( target[1], 'click', function() {
+			bind( target[1], 'click', function() {
 				target[0].action = target[1].getAttribute('formaction');
 				target[0].submit();
 				return false;
 			});
-		});
-	};
+		});		
+	});
 })();
